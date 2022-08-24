@@ -2,7 +2,7 @@
 CRUD full stack (back and front)
 
 
-Frontend #
+Frontend <br />
 Nextjs / React
 
 Backend
