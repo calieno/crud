@@ -1,21 +1,11 @@
-<style>
-    body{
-        background-color: #000;
-    }
-    h5{
-        color: gray;
-    }
-    .{
-        color:red;
-    }
-</style>
-
-<h3>Create - R<fontcolor='gray'>eadme</fontcolor> - U<fontcolor='gray'>pdate</fontcolor> - D<fontcolor='gray'>elete</fontcolor></h3><br />
-
-<h4>CRUD full stack (back and front)<h4>
-
+<h2>Create - R<fontcolor='gray'>eadme</fontcolor> - U<fontcolor='gray'>pdate</fontcolor> - D<fontcolor='gray'>elete</fontcolor></h2>
+<p>Basic CRUD full stack (back and front)</p>
+<h4 align="center"> 
+	🚧  Status:🚀 Under construction...  🚧
+</h4>
 <h5>Frontend</h5>
 * Nextjs / React
+<img src="https://img.shields.io/static/v1?label=Blog&message=Rocketseat&color=7159c1&style=for-the-badge&logo=ghost"/>
 
 <h5>Backend</h5>
 * Nodejs typescript
@@ -31,6 +21,14 @@
 
 <h5>Database</h5>
 * Any prisma compatibilty
+
+Features
+- [x] Cadastro de usuário
+- [x] Login e Validação
+- [ ] Persistencia e Sessão
+- [ ] Refresh Token
+
+![APM](https://img.shields.io/apm/l/licence?style=flat)
 
 -------------------------------------------------------------------<br />
 <h4>GIT INSTRUCTION</h4>
