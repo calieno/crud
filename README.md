@@ -1,7 +1,18 @@
-<h3>C<fontcolor='gray'>reate</fontcolor> - R<fontcolor='gray'>eadme</fontcolor> - U<fontcolor='gray'>pdate</fontcolor> - D<fontcolor='gray'>elete</fontcolor>.</h3><br />
+<style>
+    body{
+        background-color: #000;
+    }
+    h5{
+        color: gray;
+    }
+    .{
+        color:red;
+    }
+</style>
+
+<h3>Create - R<fontcolor='gray'>eadme</fontcolor> - U<fontcolor='gray'>pdate</fontcolor> - D<fontcolor='gray'>elete</fontcolor></h3><br />
 
 <h4>CRUD full stack (back and front)<h4>
-
 
 <h5>Frontend</h5>
 * Nextjs / React
