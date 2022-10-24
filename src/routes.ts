@@ -1,10 +1,14 @@
-import { Router } from "express"
-import { CreateUserController } from "./useCases/createUserController"
+import { Router } from "express";
+import { AuthenticateUserController } from "./useCases/authenticateUser/authenticateUserController";
+import { AuthenticateUserUseCase } from "./useCases/authenticateUser/authenticateUserUseCase";
+import { CreateUserController } from "./useCases/createUser/createUserController";
 
-const router = Router()
+const router = Router();
 
-const createUserController = new CreateUserController()
+const createUserController = new CreateUserController();
+const authenticateUserController = new AuthenticateUserController();
 
-router.post("/user", createUserController.handle)
+router.post("/login", authenticateUserController.handle);
+router.post("/user", createUserController.handle);
 
-export { router }
+export { router };
