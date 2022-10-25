@@ -1,6 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 const prisma = new PrismaClient();
 
 interface IUserRequest {
@@ -17,19 +20,21 @@ class AuthenticateUserUseCase {
         username,
       },
     });
+
+    //verifica se o usuario existe
     if (!userAlreadyExists) {
       throw new Error("Login fail, incorret user or password");
     }
 
     //verificar se a senha esta correta
-    const passwdMath = compare(passwd, userAlreadyExists.passwd);
+    const passwdMath = await compare(passwd, userAlreadyExists.passwd);
 
     if (!passwdMath) {
       throw new Error("Login fail, incorret user or password");
     }
-    const keyUUID = "df4f0ba0-8d35-4cce-bfc7-0dcbda1ad4b5";
+
     //gerar tokem do usuario
-    const token = sign({}, keyUUID, {
+    const token = sign({}, process.env.KUUID, {
       subject: userAlreadyExists.id,
       expiresIn: "20s",
     });
