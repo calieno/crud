@@ -10,12 +10,24 @@ datasource db {
   url      = "file:../db/db.db"
 }
 
-model user{
-  id        String    @id @unique
-  name      String
-  username  String    @unique
-  email     String    @unique
-  passwd    String 
-  createdAt DateTime  
-  updatedAt DateTime?
+model User {
+  id            String        @id @unique
+  name          String
+  username      String        @unique
+  email         String        @unique
+  passwd        String
+  createdAt     DateTime
+  updatedAt     DateTime?
+  refresh_token refreshToken?
+
+  @@map("users")
+}
+
+model refreshToken {
+  id        String @id @unique
+  expiresIn Int
+  user      User   @relation(fields: [userId], references: [id])
+  userId    String @unique
+
+  @@map("refresh_Token")
 }

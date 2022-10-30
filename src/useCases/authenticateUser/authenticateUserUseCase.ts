@@ -1,10 +1,10 @@
-import { PrismaClient } from "@prisma/client";
 import { compare } from "bcryptjs";
-import { sign } from "jsonwebtoken";
 import dotenv from "dotenv";
+import { GenerateRefreshToken } from "../../provider/genereteRefreshToken";
+import { GenerateTokenProvider } from "../../provider/generateTokenProvider";
+import { client } from "../../../prisma/client";
 
 dotenv.config();
-const prisma = new PrismaClient();
 
 interface IUserRequest {
   username: string;
@@ -15,7 +15,7 @@ class AuthenticateUserUseCase {
   async execute({ username, passwd }: IUserRequest) {
     //verify if user exists
 
-    const userAlreadyExists = await prisma.user.findFirst({
+    const userAlreadyExists = await client.user.findFirst({
       where: {
         username,
       },
@@ -34,11 +34,12 @@ class AuthenticateUserUseCase {
     }
 
     //gerar tokem do usuario
-    const token = sign({}, process.env.KUUID, {
-      subject: userAlreadyExists.id,
-      expiresIn: "20s",
-    });
-    return { token };
+    const generateTokenProvider = new GenerateTokenProvider();
+    const token = await generateTokenProvider.execute(userAlreadyExists.id);
+
+    const generateRefreshToken = new GenerateRefreshToken();
+    const refreshToken = await generateRefreshToken.execute(userAlreadyExists.id);
+    return { token, refreshToken };
   }
 }
 
