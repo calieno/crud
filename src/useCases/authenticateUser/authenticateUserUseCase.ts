@@ -37,6 +37,12 @@ class AuthenticateUserUseCase {
     const generateTokenProvider = new GenerateTokenProvider();
     const token = await generateTokenProvider.execute(userAlreadyExists.id);
 
+    await client.refreshToken.deleteMany({
+      where:{
+        userId: userAlreadyExists.id
+      }
+    })
+
     const generateRefreshToken = new GenerateRefreshToken();
     const refreshToken = await generateRefreshToken.execute(userAlreadyExists.id);
     return { token, refreshToken };

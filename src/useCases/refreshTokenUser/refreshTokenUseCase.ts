@@ -30,7 +30,7 @@ class RefreshTokenUseCase {
       const generateRefreshTokenProvider = new GenerateRefreshToken()
       const newRefreshToken = await generateRefreshTokenProvider.execute(refreshToken.userId)
 
-      return { token, newRefreshToken }
+      return { token, refreshToken: newRefreshToken }
     }
     //gerar tokem do usuario
 
