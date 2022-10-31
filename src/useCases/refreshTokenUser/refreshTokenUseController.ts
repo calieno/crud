@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { RefreshTokenUseCase } from "./refreshTokenUseCase";
 
-class RefreshTokenUseController {
+class RefreshTokenUserController {
   async handle(request: Request, response: Response) {
     const { refresh_token } = request.body;
 
@@ -13,4 +13,4 @@ class RefreshTokenUseController {
   }
 }
 
-export { RefreshTokenUseController };
+export { RefreshTokenUserController };

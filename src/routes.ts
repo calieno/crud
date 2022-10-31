@@ -3,17 +3,17 @@ import { ensureAuthenticate } from "./middleware/ensureAuthenticate";
 import { AuthenticateUserController } from "./useCases/authenticateUser/authenticateUserController";
 import { AuthenticateUserUseCase } from "./useCases/authenticateUser/authenticateUserUseCase";
 import { CreateUserController } from "./useCases/createUser/createUserController";
-import { RefreshTokenUseController } from "./useCases/refreshTokenUser/refreshTokenUseController";
+import { RefreshTokenUserController } from "./useCases/refreshTokenUser/refreshTokenUseController";
 
 const router = Router();
 
 const createUserController = new CreateUserController();
 const authenticateUserController = new AuthenticateUserController();
-const refreshTokenUseController = new RefreshTokenUseController();
+const refreshTokenUseController = new RefreshTokenUserController();
 
 router.post("/login", authenticateUserController.handle);
 router.post("/user", createUserController.handle);
-router.post("refresh-token", refreshTokenUseController.handle);
+router.post("/refresh-token", refreshTokenUseController.handle);
 router.get("/main", ensureAuthenticate, (request, response) => {
   return response.json([
     { id: 1, color: 1 },
